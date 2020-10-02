@@ -14,7 +14,7 @@ print(dados1.shape) #mostra as dimensoes do tamanho da planilha(linha, coluna)
 print(dados1.head(), "\n") #mostra as cinco primeiras linhas da planilha
 print(dados1.head(10)) #mostra o número de linhas que se pode ver da planilha
 
-print(dados2.describe())
+print(titanic.describe())
 
 alunos = {'Nome':['Marcelo','Lucas','Cynthia','Helena'],
 'Media':[4,7,5.5,9],
@@ -36,7 +36,7 @@ df1.loc[df1['Status'] == 'Aprovado']
 #Quem sobreviveu por classe social
 
 # Todos sobreviventes 
-sobreviventes = dados2[['Survived', 'Pclass']].loc[dados2['Survived'] == 1]
+sobreviventes = titanic[['Survived', 'Pclass']].loc[titanic['Survived'] == 1]
 sobreviventes.describe( )
 
 # separar por classe 
@@ -48,4 +48,16 @@ print(sobreviventes2.describe())
 print(sobreviventes3.describe())
 
 # total de pessoas em cada classe
-dados2['Pclass'].value_counts()
+titanic['Pclass'].value_counts()
+
+
+#### GRÁFICOS ####
+
+# histograma idade pessoas
+titanic.hist(column='Age', bins = 20)
+plt.show()
+
+# histograma idade de sobreviventes
+sobreviventes = titanic[['Age']].loc[titanic['Survived'] == 1]
+sobreviventes.hist(column='Age', bins = 20)
+plt.show()
